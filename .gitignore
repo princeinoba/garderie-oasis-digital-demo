@@ -1,0 +1,12 @@
+.next/
+node_modules/
+.tmp/
+.evidence/
+playwright-report/
+test-results/
+.env
+.env.local
+.vercel/
+coverage/
+*.tsbuildinfo
+docs/release-assets/*.tmp.png

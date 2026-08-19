@@ -1,0 +1,21 @@
+{
+  "tool": "Lighthouse",
+  "version": "13.4.1",
+  "auditedAt": "2026-08-19T00:02:56.607Z",
+  "url": "http://localhost:3000/",
+  "profile": "optimized build with VERCEL_ENV=production",
+  "scores": {
+    "performance": 97,
+    "accessibility": 100,
+    "bestPractices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "firstContentfulPaintSeconds": 0.8,
+    "largestContentfulPaintSeconds": 2.5,
+    "totalBlockingTimeMilliseconds": 80,
+    "cumulativeLayoutShift": 0,
+    "speedIndexSeconds": 0.8
+  },
+  "note": "The JSON report completed before Chrome launcher reported a Windows temporary-profile cleanup EPERM."
+}
