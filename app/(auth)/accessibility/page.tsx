@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { AccessibilityPageContent } from "@/components/public/info-pages";
+
+import { AccessibilityAuthPageContent } from "@/components/auth/auth-information-pages";
+
 export const metadata: Metadata = {
   title: "Accessibility",
   description: "Accessibility approach for this independent portfolio demonstration.",
   alternates: { canonical: "/accessibility" },
 };
+
 export default function AccessibilityPage() {
-  return <AccessibilityPageContent />;
+  return <AccessibilityAuthPageContent />;
 }

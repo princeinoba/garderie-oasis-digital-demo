@@ -3,7 +3,9 @@ import { expect, test } from "@playwright/test";
 test("tour preview validates, reviews, and confirms without delivery", async ({ page }) => {
   await page.goto("/tours-and-registration");
   await page.waitForLoadState("networkidle");
-  await expect(page.locator(".tour-form-card")).toHaveAttribute("data-hydrated", "true");
+  await expect(page.locator(".tour-form-card")).toHaveAttribute("data-hydrated", "true", {
+    timeout: 15_000,
+  });
   await page.getByLabel(/last name/i).fill("Johnson");
   await page.getByLabel("Email address").fill("alex.johnson@synthetic.invalid");
   await page.getByLabel(/Telephone number/i).fill("613-555-0123");

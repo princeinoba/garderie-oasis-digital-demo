@@ -1,0 +1,62 @@
+/* Visual corrections confirmed against desktop browser captures. */
+.auth-botanical-room-image {
+  z-index: 0;
+}
+
+.auth-botanical-scenic::after {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.auth-botanical-scenic-shapes {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.auth-botanical-brand {
+  z-index: 3;
+}
+
+.auth-shell .auth-access-card {
+  border: 1px solid #d3ddd5;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: clamp(24px, 3.2vw, 34px);
+  box-shadow: 0 22px 50px rgba(17, 54, 40, 0.12);
+}
+
+.auth-shell .auth-access-card .auth-form-heading {
+  margin-bottom: 0;
+}
+
+.auth-shell .onboarding-step-card .form-actions {
+  justify-content: space-between;
+  margin-top: 22px;
+}
+
+.auth-shell .onboarding-step-card .form-actions .button {
+  width: auto;
+  min-width: 148px;
+  margin-top: 0;
+}
+
+.auth-shell .auth-information-page .auth-form-heading {
+  margin-bottom: 2px;
+}
+
+@media (max-width: 700px) {
+  .auth-shell .auth-access-card {
+    border-radius: 17px;
+    padding: 23px 19px;
+  }
+}
+
+@media (max-width: 460px) {
+  .auth-shell .onboarding-step-card .form-actions {
+    align-items: stretch;
+  }
+
+  .auth-shell .onboarding-step-card .form-actions .button {
+    min-width: 0;
+  }
+}

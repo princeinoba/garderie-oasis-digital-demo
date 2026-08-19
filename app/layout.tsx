@@ -2,6 +2,11 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 
 import "./globals.css";
+import "./reference-refresh.css";
+import "./auth-reference.css";
+import "./auth-flow.css";
+import "./auth-visual-corrections.css";
+import "./faq-reference.css";
 
 import { ServiceWorkerRegistration } from "@/components/shells/service-worker-registration";
 import { getSiteUrl, shouldIndexSite } from "@/lib/site-url";

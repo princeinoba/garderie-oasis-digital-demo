@@ -2,10 +2,23 @@
 
 import { useState } from "react";
 
-import { ArrowUp, Bot, ExternalLink, ShieldCheck } from "lucide-react";
+import { ArrowUp, ExternalLink, ShieldCheck } from "lucide-react";
 
 import { useLanguage } from "@/components/i18n/language-provider";
 import { answerOasisGuide, type GuideAnswer } from "@/lib/oasis-guide";
+
+export function OasisGuideMark() {
+  return (
+    <svg className="oasis-guide-mark" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M24 41V15" />
+      <path d="M24 27c-7-1-12-5-14-11 8-1 13 2 14 11Z" />
+      <path d="M24 22c6-1 11-5 13-12-7 0-12 4-13 12Z" />
+      <path d="M24 35c-5 0-9-3-11-7 6-1 10 1 11 7Z" />
+      <path d="M24 32c5 0 9-3 11-8-6 0-10 3-11 8Z" />
+      <circle cx="24" cy="9" r="3" />
+    </svg>
+  );
+}
 
 export function OasisGuide() {
   const { locale } = useLanguage();
@@ -16,13 +29,13 @@ export function OasisGuide() {
       ? [
           "What programs are shown?",
           "How does the tour demo work?",
-          "Is this Ottawa's waitlist?",
+          "Is this Ottawa’s waitlist?",
           "Do you have spaces available?",
         ]
       : [
           "Quels programmes sont présentés?",
           "Comment fonctionne la visite de démo?",
-          "Est-ce la liste d'attente d'Ottawa?",
+          "Est-ce la liste d’attente d’Ottawa?",
           "Avez-vous des places disponibles?",
         ];
 
@@ -33,25 +46,34 @@ export function OasisGuide() {
   };
 
   return (
-    <section className="guide-card" aria-labelledby="oasis-guide-title">
-      <div className="guide-heading">
+    <section className="guide-card guide-reference-card" aria-labelledby="oasis-guide-title">
+      <header className="guide-heading">
         <span className="guide-mark">
-          <Bot aria-hidden="true" />
+          <OasisGuideMark />
         </span>
         <div>
           <h2 id="oasis-guide-title">Oasis Guide</h2>
           <p>
-            <span className="online-dot" />{" "}
-            {locale === "en" ? "Approved content mode" : "Mode de contenu approuvé"}
+            <span className="online-dot" /> {locale === "en" ? "Online" : "En ligne"}
           </p>
         </div>
-      </div>
+      </header>
+
       <div className="guide-conversation" aria-live="polite">
         <div className="guide-message guide-message-bot">
           {locale === "en"
-            ? "Hello! I can explain this demonstration, its programs, tour flow, meals, fees, and official Ottawa separation."
-            : "Bonjour! Je peux expliquer cette démonstration, ses programmes, les visites, les repas, les tarifs et la séparation avec Ottawa."}
+            ? "Hello! I’m Oasis Guide. I can explain this demonstration, its programs, tour flow, meals, fees, and official Ottawa separation."
+            : "Bonjour! Je suis le Guide Oasis. Je peux expliquer cette démonstration, ses programmes, les visites, les repas, les tarifs et la séparation avec Ottawa."}
         </div>
+        <div className="guide-message guide-message-user">
+          {locale === "en" ? "What can you help with?" : "Comment pouvez-vous m’aider?"}
+        </div>
+        <div className="guide-message guide-message-bot">
+          {locale === "en"
+            ? "Choose an approved question below or ask a general, non-sensitive question."
+            : "Choisissez une question approuvée ci-dessous ou posez une question générale non sensible."}
+        </div>
+
         {answer && (
           <>
             <div className="guide-message guide-message-user">{query}</div>
@@ -85,13 +107,15 @@ export function OasisGuide() {
           </>
         )}
       </div>
-      <div className="guide-suggestions">
+
+      <div className="guide-suggestions" aria-label="Approved questions">
         {suggestions.map((suggestion) => (
           <button key={suggestion} type="button" onClick={() => ask(suggestion)}>
             {suggestion}
           </button>
         ))}
       </div>
+
       <form
         className="guide-input"
         onSubmit={(event) => {
@@ -116,6 +140,37 @@ export function OasisGuide() {
           <ArrowUp aria-hidden="true" />
         </button>
       </form>
+
+      <div className="guide-boundary-note">
+        <OasisGuideMark />
+        <span>
+          {locale === "en"
+            ? "Oasis Guide provides general information and is not a substitute for official policies."
+            : "Le Guide Oasis fournit des renseignements généraux et ne remplace pas les politiques officielles."}
+        </span>
+      </div>
+
+      <div className="guide-reference-sources">
+        <strong>{locale === "en" ? "Approved sources" : "Sources approuvées"}</strong>
+        <a
+          href={
+            locale === "en"
+              ? "https://ottawa.ca/en/family-and-social-services/childrens-services/apply-child-care"
+              : "https://ottawa.ca/fr/famille-et-services-sociaux/services-pour-enfants/demander-une-place-en-service-de-garde"
+          }
+          target="_blank"
+          rel="noreferrer"
+        >
+          {locale === "en"
+            ? "City of Ottawa — Child Care Services"
+            : "Ville d’Ottawa — Services de garde"}
+          <ExternalLink aria-hidden="true" size={12} />
+        </a>
+        <span>
+          {locale === "en" ? "Approved demonstration pages" : "Pages de démonstration approuvées"}
+        </span>
+      </div>
+
       <p className="guide-footnote">
         {locale === "en"
           ? "Deterministic approved-content retrieval. No remote AI, personal data, or real messages."

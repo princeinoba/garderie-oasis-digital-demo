@@ -1,0 +1,623 @@
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.checkColumn {
+  width: 34px;
+  text-align: center;
+}
+
+.checkColumn input {
+  width: 14px;
+  height: 14px;
+  accent-color: #0b513b;
+}
+
+.actionColumn {
+  width: 42px;
+  text-align: right;
+}
+
+.actionColumn :global(.icon-button),
+.staffBoard :global(.icon-button) {
+  width: 28px;
+  height: 28px;
+  border: 0;
+}
+
+.tableFooter {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pagination {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.pagination button {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid #dfe0dc;
+  border-radius: 4px;
+  background: white;
+  color: #365047;
+  font-size: 0.62rem;
+}
+
+.pagination button:disabled {
+  color: #a7aea9;
+  cursor: default;
+}
+
+.pagination button svg {
+  width: 13px;
+}
+
+.pagination .currentPage {
+  border-color: #a9bea9;
+  background: #edf2e9;
+  color: #0b513b;
+  font-weight: 750;
+}
+
+.pagination select,
+.compactSelect select {
+  height: 28px;
+  border: 1px solid #dfe0dc;
+  border-radius: 4px;
+  background: white;
+  padding: 0 24px 0 8px;
+  color: #43524c;
+  font-size: 0.6rem;
+}
+
+.contentToolbar {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.compactSelect {
+  display: block;
+}
+
+.simpleFooter {
+  margin-top: 10px;
+  border-top: 1px solid #ecece9;
+  padding-top: 10px;
+  color: #6a746f;
+  font-size: 0.6rem;
+}
+
+.staffBoard :global(.staff-table-head),
+.staffBoard :global(.staff-list article) {
+  grid-template-columns:
+    minmax(210px, 1.05fr) minmax(155px, 0.78fr) minmax(230px, 1.1fr) 72px
+    36px;
+}
+
+.staffBoard :global(.staff-list article) > button {
+  justify-self: end;
+}
+
+.settingsBoard {
+  grid-template-columns: 175px minmax(0, 1fr);
+}
+
+.settingsBoard > nav {
+  position: sticky;
+  top: 82px;
+  align-self: start;
+}
+
+.settingsBoard .settingsRow {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) minmax(185px, auto);
+  gap: 13px;
+  align-items: center;
+}
+
+.settingIcon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 7px;
+  background: #edf2e9;
+  color: #0b513b;
+}
+
+.settingIcon svg {
+  width: 17px;
+}
+
+.demoSwitch {
+  position: relative;
+  width: 42px;
+  height: 23px;
+  justify-self: end;
+  border: 0;
+  border-radius: 999px;
+  background: #18704f;
+  opacity: 1;
+}
+
+.demoSwitch span {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 18%);
+}
+
+.controlLabel {
+  display: grid;
+  gap: 5px;
+  min-width: 210px;
+  color: #647069;
+  font-size: 0.58rem;
+}
+
+.controlLabel select {
+  min-height: 34px;
+  border: 1px solid #dfe0dc;
+  border-radius: 5px;
+  background: white;
+  padding: 6px 28px 6px 9px;
+  color: #263a32;
+  font-size: 0.62rem;
+}
+
+.languageControls {
+  display: grid;
+  gap: 8px;
+}
+
+.settingsBoard .integrationSection {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.integrationSection > header {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 13px;
+  align-items: center;
+}
+
+.integrationList {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 0 51px;
+  padding: 0;
+  list-style: none;
+}
+
+.integrationList li {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 32px;
+  border: 1px solid #ecece9;
+  border-radius: 5px;
+  padding: 6px 8px;
+  font-size: 0.62rem;
+}
+
+.integrationList li svg {
+  width: 14px;
+  color: #50645b;
+}
+
+.integrationList li strong {
+  border-radius: 4px;
+  background: #eeefed;
+  padding: 4px 7px;
+  color: #5a615e;
+  font-size: 0.55rem;
+}
+
+.proposalBoard {
+  display: grid;
+  gap: 12px;
+}
+
+.proposalTabs {
+  display: flex;
+  gap: 22px;
+  border-bottom: 1px solid #dfe0dc;
+}
+
+.proposalTabs button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  padding: 0 2px 9px;
+  color: #6a746f;
+  font-size: 0.65rem;
+}
+
+.proposalTabs .activeTab {
+  border-bottom-color: #0b513b;
+  color: #0b513b;
+  font-weight: 750;
+}
+
+.proposalCard {
+  overflow: hidden;
+}
+
+.proposalCard > header {
+  align-items: center;
+}
+
+.proposalHeaderActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.proposalHeaderActions :global(.icon-button) {
+  width: 30px;
+  height: 30px;
+}
+
+.proposalHeaderActions svg {
+  width: 14px;
+}
+
+.proposalCard :global(.proposal-grid) li {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.proposalCard :global(.proposal-grid) li svg {
+  width: 13px;
+  flex: 0 0 auto;
+}
+
+.proposalCard > footer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.proposalCard > footer :global(.icon-button) {
+  width: 32px;
+  height: 32px;
+}
+
+.approvedProposalList {
+  display: grid;
+  gap: 10px;
+}
+
+.approvedProposalList article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 34px;
+  gap: 12px;
+  align-items: center;
+}
+
+.approvedProposalList h2 {
+  margin: 0;
+  font-size: 0.78rem;
+}
+
+.approvedProposalList p {
+  margin: 3px 0 0;
+  color: #6a746f;
+  font-size: 0.6rem;
+}
+
+.approvedProposalList :global(.icon-button) {
+  width: 30px;
+  height: 30px;
+}
+
+.calendarHeaderControls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.segmentedControl {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #dfe0dc;
+  border-radius: 5px;
+}
+
+.segmentedControl button {
+  min-height: 32px;
+  border: 0;
+  background: white;
+  padding: 5px 11px;
+  color: #5d6963;
+  font-size: 0.61rem;
+}
+
+.segmentedControl .segmentActive {
+  background: #0b513b;
+  color: white;
+  font-weight: 700;
+}
+
+.calendarBoard {
+  padding: 0;
+  overflow: hidden;
+}
+
+.calendarScroller {
+  overflow-x: auto;
+}
+
+.calendarTable {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.calendarTable th,
+.calendarTable td {
+  border-right: 1px solid #ecece9;
+  border-bottom: 1px solid #ecece9;
+}
+
+.calendarTable thead th {
+  height: 52px;
+  background: #fbfbf9;
+  color: #5c6963;
+  font-size: 0.61rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.calendarTable thead th:first-child,
+.calendarTable tbody th {
+  width: 65px;
+}
+
+.calendarTable thead span,
+.calendarTable thead strong {
+  display: block;
+}
+
+.calendarTable thead strong {
+  margin-top: 2px;
+  color: #24372f;
+  font-size: 0.72rem;
+}
+
+.calendarTable tbody th {
+  padding: 8px;
+  color: #738079;
+  font-size: 0.57rem;
+  font-weight: 550;
+  text-align: left;
+  vertical-align: top;
+}
+
+.calendarTable td {
+  height: 56px;
+  padding: 4px;
+  vertical-align: top;
+}
+
+.closedDay {
+  background-image: repeating-linear-gradient(
+    135deg,
+    #fafaf8 0,
+    #fafaf8 5px,
+    #f0f1ee 5px,
+    #f0f1ee 7px
+  );
+}
+
+.calendarEventSage,
+.calendarEventGold {
+  display: grid;
+  gap: 1px;
+  border-radius: 5px;
+  padding: 5px 6px;
+  font-size: 0.54rem;
+  line-height: 1.2;
+}
+
+.calendarEventSage {
+  border-left: 3px solid #4d845e;
+  background: #dfeeda;
+  color: #23452f;
+}
+
+.calendarEventGold {
+  border-left: 3px solid #cc8a14;
+  background: #fff0c9;
+  color: #694916;
+}
+
+.calendarEventSage time,
+.calendarEventGold time {
+  font-size: 0.5rem;
+}
+
+.calendarEventSage strong,
+.calendarEventGold strong {
+  font-size: 0.56rem;
+}
+
+.capacityPanel {
+  padding: 13px 15px 15px;
+}
+
+.capacityPanel h2 {
+  margin: 0 0 10px;
+  color: #263b32;
+  font-size: 0.7rem;
+}
+
+.capacityPanel > div {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(70px, 1fr));
+  gap: 7px;
+}
+
+.capacityPanel span {
+  display: grid;
+  gap: 3px;
+  border-radius: 5px;
+  padding: 6px;
+  text-align: center;
+}
+
+.capacityPanel small {
+  color: #68746e;
+  font-size: 0.52rem;
+}
+
+.capacityPanel strong {
+  font-size: 0.6rem;
+}
+
+.capacity_available {
+  background: #edf5e8;
+  color: #2c7044;
+}
+
+.capacity_limited {
+  background: #fff6df;
+  color: #9a6514;
+}
+
+.capacity_closed {
+  background: #f2f2f0;
+  color: #6f7471;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 13px;
+  color: #6a746f;
+  font-size: 0.63rem;
+}
+
+.breadcrumb a {
+  color: #0b513b;
+  font-weight: 650;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb svg {
+  width: 12px;
+  height: 12px;
+}
+
+@media (max-width: 900px) {
+  .tableFooter,
+  .contentToolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .staffBoard {
+    overflow-x: auto;
+  }
+
+  .settingsBoard {
+    grid-template-columns: 1fr;
+  }
+
+  .settingsBoard > nav {
+    position: static;
+    display: flex;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .tableFooter {
+    gap: 10px;
+  }
+
+  .pagination {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .settingsBoard .settingsRow {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .settingsBoard .settingsRow > :last-child {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+
+  .demoSwitch {
+    width: 42px;
+    justify-self: start;
+  }
+
+  .controlLabel {
+    min-width: 0;
+  }
+
+  .integrationList {
+    margin-left: 0;
+  }
+
+  .proposalCard :global(.proposal-grid) {
+    grid-template-columns: 1fr;
+  }
+
+  .proposalCard > header,
+  .approvedProposalList article {
+    align-items: flex-start;
+  }
+
+  .approvedProposalList article {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .approvedProposalList article > :last-child {
+    grid-column: 2;
+  }
+
+  .calendarHeaderControls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .capacityPanel {
+    overflow-x: auto;
+  }
+
+  .capacityPanel > div {
+    min-width: 630px;
+  }
+}

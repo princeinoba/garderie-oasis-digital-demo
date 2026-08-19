@@ -33,15 +33,24 @@ export async function POST(request: Request) {
   }
   if (typeof body !== "object" || body === null)
     return Response.json({ error: "Invalid request." }, { status: 400 });
-  const { email, password } = body as { email?: string; password?: string };
-  if (email?.toLowerCase() !== "director@synthetic.invalid" || password !== "oasis-demo") {
+
+  const { email, password, experience } = body as {
+    email?: string;
+    password?: string;
+    experience?: string;
+  };
+  const validCredentials =
+    email?.toLowerCase() === "director@synthetic.invalid" && password === "oasis-demo";
+  const validSharedEntry = experience === "director";
+
+  if (!validCredentials && !validSharedEntry) {
     return Response.json(
-      { error: "Use the displayed synthetic demo credentials." },
+      { error: "Choose the Director workspace from the shared demo access page." },
       { status: 401 },
     );
   }
 
-  const response = Response.json({ ok: true });
+  const response = Response.json({ ok: true, role: "director" });
   response.headers.append(
     "Set-Cookie",
     `oasis_demo_session=director-demo-v1; Path=/; HttpOnly; SameSite=Strict; Max-Age=7200${new URL(request.url).protocol === "https:" ? "; Secure" : ""}`,

@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
   Bot,
   CalendarDays,
   CircleHelp,
   LayoutDashboard,
+  PanelLeftClose,
   Settings,
   UsersRound,
   UserRoundSearch,
@@ -23,22 +27,32 @@ const links = [
 ] as const;
 
 export function DirectorNav() {
+  const pathname = usePathname();
+
   return (
     <aside className="director-sidebar">
       <BrandMark compact />
-      <span className="director-demo-badge">Synthetic demo</span>
+      <span className="director-demo-badge">Synthetic Demo</span>
       <nav aria-label="Director navigation">
-        {links.map(([href, label, Icon]) => (
-          <Link href={href} key={href}>
-            <Icon aria-hidden="true" />
-            {label}
-          </Link>
-        ))}
+        {links.map(([href, label, Icon]) => {
+          const active = href === "/director" ? pathname === href : pathname.startsWith(href);
+          return (
+            <Link
+              aria-label={label}
+              className={active ? "is-active" : undefined}
+              href={href}
+              key={href}
+            >
+              <Icon aria-hidden="true" />
+              <span>{label}</span>
+            </Link>
+          );
+        })}
       </nav>
-      <div className="director-sidebar-foot">
-        <span className="status-dot" />
-        Remote services disabled
-      </div>
+      <button className="director-collapse" type="button" aria-label="Collapse navigation">
+        <PanelLeftClose aria-hidden="true" />
+        <span>Collapse</span>
+      </button>
     </aside>
   );
 }

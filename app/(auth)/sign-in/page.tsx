@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+
 import { SignInForm } from "@/components/auth/sign-in-form";
+
 export const metadata: Metadata = {
-  title: "Director Sign In",
-  description: "Protected access to the synthetic director demonstration.",
+  title: "Shared Demo Access",
+  description: "Choose a fictional role-scoped Garderie Oasis demonstration experience.",
 };
-export default function SignInPage() {
-  return (
-    <>
-      <SignInForm />
-      <p className="auth-helper">
-        <Link href="/forgot-password">Forgot password?</Link> -{" "}
-        <Link href="/">Return to public site</Link>
-      </p>
-    </>
-  );
+
+export default async function SignInPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ next?: string | string[] }>;
+}) {
+  const query = await searchParams;
+  const candidate = typeof query.next === "string" ? query.next : "/director";
+  const nextPath =
+    candidate === "/director" || candidate.startsWith("/director/") ? candidate : "/director";
+
+  return <SignInForm nextPath={nextPath} />;
 }

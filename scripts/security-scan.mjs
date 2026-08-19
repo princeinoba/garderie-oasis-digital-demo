@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { extname } from "node:path";
 
 const candidates = execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard"], {
@@ -7,6 +7,7 @@ const candidates = execFileSync("git", ["ls-files", "--cached", "--others", "--e
 })
   .split(/\r?\n/)
   .filter(Boolean)
+  .filter((path) => existsSync(path))
   .filter(
     (path) =>
       !path.startsWith(".evidence/") &&

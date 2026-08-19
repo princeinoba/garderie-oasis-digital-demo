@@ -37,7 +37,17 @@ test("keyboard skip link and mobile navigation are operable", async ({ page }, t
 });
 
 test("@a11y tour and director surfaces have no serious axe violations", async ({ page }) => {
-  for (const route of ["/tours-and-registration", "/privacy", "/accessibility"]) {
+  test.setTimeout(120_000);
+
+  for (const route of [
+    "/tours-and-registration",
+    "/privacy",
+    "/accessibility",
+    "/sign-in",
+    "/forgot-password",
+    "/accept-invite",
+    "/onboarding",
+  ]) {
     await page.goto(route);
     await page.waitForLoadState("networkidle");
     const results = await new AxeBuilder({ page })
@@ -50,8 +60,16 @@ test("@a11y tour and director surfaces have no serious axe violations", async ({
     ).toEqual([]);
   }
 
-  await page.goto("/sign-in");
-  await page.getByRole("button", { name: "Sign In" }).click();
+  await page.context().addCookies([
+    {
+      name: "oasis_demo_session",
+      value: "director-demo-v1",
+      url: "http://localhost:3000",
+      httpOnly: true,
+      sameSite: "Strict",
+    },
+  ]);
+  await page.goto("/director");
   await expect(page).toHaveURL(/director$/);
   const directorResults = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag22aa"])
@@ -80,7 +98,7 @@ test("capture responsive release evidence", async ({ page }, testInfo) => {
 
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/sign-in");
-  await page.getByRole("button", { name: "Sign In" }).click();
+  await page.getByRole("button", { name: "Director workspace" }).click();
   await expect(page).toHaveURL(/director$/);
   await page.screenshot({ path: resolve(outputDir, "director-1440.png"), fullPage: true });
 });

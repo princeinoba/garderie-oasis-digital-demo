@@ -1,44 +1,30 @@
 import Link from "next/link";
 
-import { ArrowRight, Bot, CalendarCheck, Clock3, UserRoundSearch } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { demoInquiries } from "@/lib/demo/director-data";
 
 export const metadata = { title: "Director Overview" };
 
+const metrics = [
+  ["New Inquiries", 12, "+3 vs yesterday"],
+  ["Tours This Week", 8, "+2 vs last week"],
+  ["Follow-ups", 5, "Due in next 7 days"],
+  ["AI Drafts", 3, "Ready for review"],
+] as const;
+
 export default function DirectorOverviewPage() {
-  const metrics = [
-    [
-      "New inquiries",
-      demoInquiries.filter((item) => item.status === "new").length + 7,
-      UserRoundSearch,
-      "+3 vs yesterday",
-    ],
-    ["Tours this week", 8, CalendarCheck, "+2 vs last week"],
-    ["Follow-ups", 5, Clock3, "Due in next 7 days"],
-    ["AI drafts", 3, Bot, "Ready for human review"],
-  ] as const;
   return (
     <>
       <header className="director-page-heading">
         <div>
-          <p className="eyebrow">Director overview</p>
-          <h1>Welcome back, Director.</h1>
-          <p>
-            Monitor fictional tour interest, review work, and keep every automated suggestion
-            human-controlled.
-          </p>
+          <h1>Overview</h1>
+          <p>Welcome back, Director.</p>
         </div>
-        <Link className="button button-primary" href="/director/tour-inquiries">
-          View inquiries <ArrowRight aria-hidden="true" />
-        </Link>
       </header>
-      <section className="director-metrics">
-        {metrics.map(([label, value, Icon, note]) => (
+      <section className="director-metrics" aria-label="Overview metrics">
+        {metrics.map(([label, value, note]) => (
           <article key={label}>
-            <span>
-              <Icon aria-hidden="true" />
-            </span>
             <p>{label}</p>
             <strong>{value}</strong>
             <small>{note}</small>
@@ -46,57 +32,69 @@ export default function DirectorOverviewPage() {
         ))}
       </section>
       <section className="director-grid">
-        <article className="dashboard-panel">
+        <article className="dashboard-panel dashboard-chart-panel">
           <header>
             <div>
               <h2>Inquiries Over Time</h2>
-              <p>Last 30 days - synthetic</p>
+              <p>Last 30 days</p>
             </div>
-            <span className="status-pill status-new">Tour requests</span>
+            <span className="chart-legend">
+              <i /> New inquiries <i /> Tours completed
+            </span>
           </header>
-          <div className="chart" role="img" aria-label="Synthetic inquiry volume trend">
-            <span style={{ height: "28%" }} />
-            <span style={{ height: "46%" }} />
-            <span style={{ height: "35%" }} />
-            <span style={{ height: "68%" }} />
-            <span style={{ height: "60%" }} />
-            <span style={{ height: "84%" }} />
-            <span style={{ height: "73%" }} />
-            <span style={{ height: "95%" }} />
+          <div
+            className="reference-line-chart"
+            role="img"
+            aria-label="Synthetic inquiry volume trend"
+          >
+            <svg viewBox="0 0 760 260" preserveAspectRatio="none" aria-hidden="true">
+              <g className="chart-grid-lines">
+                <path d="M0 40H760M0 100H760M0 160H760M0 220H760" />
+              </g>
+              <path
+                className="chart-area"
+                d="M0 220C55 192 62 124 115 143S190 223 239 169 310 68 363 126 432 199 478 144 547 174 600 105 684 150 760 34V260H0Z"
+              />
+              <path
+                className="chart-line-primary"
+                d="M0 220C55 192 62 124 115 143S190 223 239 169 310 68 363 126 432 199 478 144 547 174 600 105 684 150 760 34"
+              />
+              <path
+                className="chart-line-secondary"
+                d="M0 238C80 224 95 186 150 201s70 39 113 16 90-44 135-16 69 23 116 5 91-33 132-14 69 10 114-18"
+              />
+            </svg>
           </div>
           <div className="chart-axis">
-            <span>Jul 20</span>
-            <span>Jul 27</span>
-            <span>Aug 3</span>
-            <span>Aug 10</span>
-            <span>Aug 17</span>
+            <span>Apr 22</span>
+            <span>Apr 29</span>
+            <span>May 6</span>
+            <span>May 13</span>
+            <span>May 20</span>
           </div>
         </article>
-        <article className="dashboard-panel">
+        <article className="dashboard-panel recent-activity-panel">
           <header>
             <div>
               <h2>Recent Activity</h2>
-              <p>Human-reviewed demo events</p>
             </div>
           </header>
           <ul className="activity-list">
             {demoInquiries.slice(0, 4).map((item, index) => (
               <li key={item.id}>
-                <span className="activity-icon">{index + 1}</span>
+                <span className={`activity-icon activity-${index + 1}`}>{index + 1}</span>
                 <div>
                   <strong>
                     {index === 0
                       ? "New inquiry from"
                       : index === 1
-                        ? "Tour confirmed for"
+                        ? "Tour completed for"
                         : index === 2
-                          ? "Follow-up due for"
-                          : "Inquiry assigned to"}{" "}
+                          ? "AI proposal ready for"
+                          : "Follow-up due for"}{" "}
                     {item.guardian}
                   </strong>
-                  <small>
-                    {item.reference} - {item.assignedTo}
-                  </small>
+                  <small>{index === 0 ? "10:34 AM" : index === 1 ? "Yesterday" : "Aug 18"}</small>
                 </div>
               </li>
             ))}

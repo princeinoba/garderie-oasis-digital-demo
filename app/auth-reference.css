@@ -1,0 +1,599 @@
+/* Reference-authentication visual layer. Imported after globals.css. */
+
+.auth-shell {
+  --auth-forest: #124a36;
+  --auth-forest-deep: #0b3829;
+  --auth-sage: #87a167;
+  --auth-sage-pale: #edf1e2;
+  --auth-gold: #e7a526;
+  --auth-coral: #e87555;
+  --auth-ink: #17231d;
+  --auth-muted: #55615a;
+  --auth-line: #d5dacf;
+  --auth-paper: #fffefa;
+  min-height: 100svh;
+  background: #f7f5ee;
+  color: var(--auth-ink);
+}
+
+.auth-shell > header {
+  position: relative;
+  z-index: 10;
+  min-height: 58px;
+  border-bottom: 1px solid #d6d8d0;
+  background: rgba(255, 254, 250, 0.97);
+  padding: 7px clamp(16px, 2.7vw, 34px);
+  box-shadow: 0 1px 0 rgba(14, 54, 39, 0.02);
+}
+
+.auth-shell > header .brand {
+  gap: 10px;
+}
+
+.auth-shell > header .brand-symbol {
+  width: 35px;
+  height: 35px;
+}
+
+.auth-shell > header .brand-copy strong {
+  color: var(--auth-forest-deep);
+  font-size: 0.97rem;
+}
+
+.auth-shell > header .brand-copy span {
+  display: none;
+}
+
+.auth-shell > header nav {
+  gap: clamp(12px, 2vw, 22px);
+  color: #27332d;
+  font-size: 0.78rem;
+  font-weight: 650;
+}
+
+.auth-shell > header nav a {
+  position: relative;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.auth-stage {
+  display: grid;
+  grid-template-columns: minmax(285px, 37%) minmax(0, 1fr);
+  min-height: calc(100svh - 102px);
+  background: var(--auth-paper);
+}
+
+.auth-stage > section {
+  display: grid;
+  align-content: center;
+  min-width: 0;
+  padding: clamp(32px, 5.5vw, 76px) clamp(24px, 6.4vw, 92px);
+}
+
+.auth-art {
+  position: relative;
+  overflow: hidden;
+  min-height: 620px;
+  padding: 0;
+  background: #f5ead2;
+  isolation: isolate;
+}
+
+.auth-botanical,
+.auth-botanical-scenic,
+.auth-botanical-abstract {
+  position: absolute;
+  inset: 0;
+}
+
+.auth-botanical-scenic {
+  overflow: hidden;
+  background: #e8dfc9;
+}
+
+.auth-botanical-room-image {
+  z-index: -2;
+  object-fit: cover;
+  object-position: 46% 70%;
+  filter: saturate(0.84) contrast(0.94) brightness(1.04);
+}
+
+.auth-botanical-scenic::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 250, 235, 0.02) 44%, rgba(251, 244, 224, 0.28));
+  content: "";
+}
+
+.auth-botanical-scenic-shapes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.auth-botanical-brand {
+  position: absolute;
+  z-index: 2;
+  top: clamp(29px, 5vw, 52px);
+  left: clamp(24px, 4.6vw, 49px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.auth-botanical-brand > svg {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+}
+
+.auth-botanical-brand div {
+  display: grid;
+  gap: 14px;
+}
+
+.auth-botanical-brand strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.auth-botanical-brand span {
+  font-size: 0.78rem;
+  line-height: 1.48;
+}
+
+.auth-botanical-abstract {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.auth-shell > footer {
+  position: relative;
+  z-index: 10;
+  min-height: 44px;
+  border-top: 1px solid #d6d8d0;
+  background: var(--auth-paper);
+  padding: 13px clamp(16px, 2.7vw, 34px);
+  color: #39453f;
+  font-size: 0.73rem;
+}
+
+/* Compact sign-in, reset, and invitation forms. */
+.auth-shell .auth-form,
+.auth-shell .auth-helper,
+.auth-shell .auth-access-card,
+.auth-shell .auth-route-links {
+  width: min(100%, 570px);
+  margin-inline: auto;
+}
+
+.auth-shell .auth-form {
+  padding: 0;
+}
+
+.auth-shell .auth-form-heading {
+  margin-bottom: 23px;
+}
+
+.auth-shell .auth-form-heading .eyebrow {
+  margin: 0 0 8px;
+  color: var(--auth-forest);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.auth-shell .auth-form-heading h1,
+.auth-shell .auth-access-card h1,
+.auth-shell .auth-information-page h1 {
+  margin: 0 0 8px;
+  color: var(--auth-forest-deep);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 3.6vw, 3.05rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.auth-shell .auth-form-heading p:last-child,
+.auth-shell .auth-access-card > p,
+.auth-shell .auth-information-page > p {
+  max-width: 50ch;
+  margin: 0;
+  color: var(--auth-muted);
+  font-size: 0.94rem;
+  line-height: 1.52;
+}
+
+.auth-shell .field {
+  gap: 7px;
+  margin-top: 15px;
+  color: #17231d;
+  font-size: 0.82rem;
+  font-weight: 720;
+}
+
+.auth-shell .field input,
+.auth-shell .field select,
+.auth-shell .field textarea {
+  min-height: 43px;
+  border: 1px solid #bfc7bf;
+  border-radius: 5px;
+  background: #fff;
+  color: #17231d;
+  font: inherit;
+  font-weight: 500;
+  outline: 0;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.auth-shell .field input:focus-visible,
+.auth-shell .field select:focus-visible,
+.auth-shell .field textarea:focus-visible {
+  border-color: #1d70d6;
+  box-shadow: 0 0 0 2px rgba(29, 112, 214, 0.17);
+}
+
+.auth-shell .input-with-icon > svg {
+  color: #587064;
+}
+
+.auth-shell .notice,
+.auth-shell .demo-credentials {
+  border-radius: 7px;
+  padding: 14px 16px;
+  font-size: 0.8rem;
+  line-height: 1.42;
+}
+
+.auth-shell .notice-sage,
+.auth-shell .demo-credentials {
+  border-color: #bdcaa9;
+  background: linear-gradient(120deg, #f0f3e5, #f8f7ec);
+}
+
+.auth-shell .notice-gold {
+  border-color: #e5bc61;
+  background: #fff6de;
+}
+
+.auth-shell .button-primary {
+  min-height: 43px;
+  border: 1px solid var(--auth-forest-deep);
+  border-radius: 5px;
+  background: linear-gradient(100deg, #0d4a35, #1d6748);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 760;
+  box-shadow: 0 5px 14px rgba(12, 61, 43, 0.13);
+}
+
+.auth-shell .button-primary:hover {
+  background: #0c402f;
+  translate: 0 -1px;
+}
+
+.auth-shell .button-primary:focus-visible,
+.auth-shell .auth-workspace-links a:focus-visible,
+.auth-shell .auth-route-links a:focus-visible {
+  outline: 3px solid rgba(230, 164, 37, 0.46);
+  outline-offset: 3px;
+}
+
+.auth-shell .auth-helper,
+.auth-shell .auth-route-links {
+  margin-top: 18px;
+  color: var(--auth-forest);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* Shared role-scoped authentication landing design. */
+.auth-shell .auth-access-card {
+  display: grid;
+  gap: 20px;
+}
+
+.auth-shell .auth-access-card .auth-access-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--auth-forest-deep);
+  font-weight: 800;
+}
+
+.auth-shell .auth-access-card .eyebrow {
+  margin: 0;
+  color: #4b5a52;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.auth-shell .auth-access-card .notice {
+  margin: 0;
+}
+
+.auth-shell .auth-workspace-links {
+  display: grid;
+  gap: 9px;
+}
+
+.auth-shell .auth-workspace-links a {
+  display: flex;
+  min-height: 45px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #c7cec8;
+  border-radius: 10px;
+  background: #fff;
+  color: #15231c;
+  font-weight: 760;
+  text-decoration: none;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    translate 150ms ease;
+}
+
+.auth-shell .auth-workspace-links a:first-child,
+.auth-shell .auth-workspace-links .is-primary {
+  border-color: #176248;
+  background: #176248;
+  color: #fff;
+}
+
+.auth-shell .auth-workspace-links a:hover {
+  border-color: #376b54;
+  translate: 0 -1px;
+}
+
+.auth-shell .auth-route-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+
+.auth-shell .auth-route-links a {
+  color: var(--auth-forest);
+  font-weight: 760;
+  text-underline-offset: 4px;
+}
+
+/* Wide onboarding, privacy, and accessibility compositions. */
+.auth-stage:has(.auth-reference-wide) {
+  grid-template-columns: clamp(82px, 11vw, 148px) minmax(0, 1fr);
+}
+
+.auth-stage:has(.auth-reference-wide) .auth-botanical-scenic {
+  display: none;
+}
+
+.auth-stage:has(.auth-reference-wide) .auth-botanical-abstract {
+  display: block;
+}
+
+.auth-stage:has(.auth-reference-wide) > section {
+  padding: clamp(32px, 4.5vw, 66px) clamp(24px, 6vw, 90px);
+}
+
+.auth-shell .auth-reference-wide {
+  width: min(100%, 920px);
+  margin-inline: auto;
+}
+
+.auth-shell .auth-reference-wide.auth-form,
+.auth-shell .auth-reference-wide .auth-form {
+  width: 100%;
+}
+
+.auth-shell .auth-reference-wide .mini-stepper,
+.auth-shell .auth-reference-wide.mini-stepper {
+  margin: 23px 0;
+}
+
+.auth-shell .auth-information-page {
+  display: grid;
+  gap: 24px;
+}
+
+.auth-shell .auth-info-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.auth-shell .auth-info-list > li,
+.auth-shell .auth-info-list > article {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  min-height: 66px;
+}
+
+.auth-shell .auth-info-list .auth-info-icon,
+.auth-shell .auth-info-list > li > svg,
+.auth-shell .auth-info-list > article > svg {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--auth-sage-pale);
+  color: var(--auth-forest-deep);
+  padding: 12px;
+}
+
+.auth-shell .auth-info-list strong,
+.auth-shell .auth-info-list h2,
+.auth-shell .auth-info-list h3 {
+  margin: 0 0 3px;
+  color: #122219;
+  font-family: inherit;
+  font-size: 0.91rem;
+  font-weight: 790;
+}
+
+.auth-shell .auth-info-list p {
+  max-width: 64ch;
+  margin: 0;
+  color: #37423c;
+  font-size: 0.8rem;
+  line-height: 1.42;
+}
+
+@media (max-width: 900px) {
+  .auth-stage {
+    grid-template-columns: minmax(240px, 34%) minmax(0, 1fr);
+  }
+
+  .auth-stage > section {
+    padding-inline: clamp(22px, 4vw, 46px);
+  }
+
+  .auth-botanical-brand {
+    left: 23px;
+  }
+
+  .auth-botanical-brand > svg {
+    width: 47px;
+    height: 47px;
+  }
+}
+
+@media (max-width: 700px) {
+  .auth-stage,
+  .auth-stage:has(.auth-reference-wide) {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-stage > .auth-art {
+    min-height: 180px;
+  }
+
+  .auth-stage:has(.auth-reference-wide) > .auth-art {
+    min-height: 105px;
+  }
+
+  .auth-stage > section,
+  .auth-stage:has(.auth-reference-wide) > section {
+    align-content: start;
+    padding: 32px 20px 42px;
+  }
+
+  .auth-botanical-room-image {
+    object-position: 50% 63%;
+  }
+
+  .auth-botanical-scenic-shapes {
+    width: 67%;
+    min-width: 320px;
+  }
+
+  .auth-botanical-brand {
+    top: 20px;
+    left: 20px;
+  }
+
+  .auth-botanical-brand div {
+    gap: 7px;
+  }
+
+  .auth-botanical-brand span {
+    font-size: 0.7rem;
+  }
+
+  .auth-stage:has(.auth-reference-wide) .auth-botanical-abstract {
+    width: 100%;
+    height: 250%;
+    translate: 0 -29%;
+  }
+
+  .auth-shell .auth-form-heading h1,
+  .auth-shell .auth-access-card h1,
+  .auth-shell .auth-information-page h1 {
+    font-size: clamp(1.9rem, 9vw, 2.65rem);
+  }
+
+  .auth-shell .auth-reference-wide .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-shell > footer {
+    text-align: center;
+  }
+}
+
+@media (max-width: 460px) {
+  .auth-shell > header {
+    min-height: 54px;
+    padding-inline: 13px;
+  }
+
+  .auth-shell > header .brand-symbol {
+    width: 31px;
+    height: 31px;
+  }
+
+  .auth-shell > header nav {
+    gap: 9px;
+    font-size: 0.72rem;
+  }
+
+  .auth-stage > .auth-art {
+    min-height: 160px;
+  }
+
+  .auth-botanical-brand > svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .auth-botanical-brand strong {
+    font-size: 0.98rem;
+  }
+
+  .auth-botanical-brand span {
+    display: none;
+  }
+
+  .auth-shell .auth-info-list > li,
+  .auth-shell .auth-info-list > article {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .auth-shell .auth-info-list .auth-info-icon,
+  .auth-shell .auth-info-list > li > svg,
+  .auth-shell .auth-info-list > article > svg {
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-shell *,
+  .auth-shell *::before,
+  .auth-shell *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
